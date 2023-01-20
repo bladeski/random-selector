@@ -1,0 +1,49 @@
+{
+  "env": {
+    "browser": true
+  },
+  "root": true,
+  // "files": ["*.ts", "*.tsx"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "plugins": ["sort-class-members", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".scss"]
+  },
+  "rules": {
+    "sort-class-members/sort-class-members": [
+      2,
+      {
+        "order": [
+          "[static-properties]",
+          "[static-methods]",
+          "[private-properties]",
+          "[properties]",
+          "[getters]",
+          "[setters]",
+          "constructor",
+          "[private-methods]",
+          "[methods]",
+          "[everything-else]"
+        ],
+        "groups": {
+          "static-properties": [{"type": "property", "static": true, "sort": "alphabetical"}],
+          "static-methods": [{"type": "method", "static": true, "sort": "alphabetical"}],
+          "private-properties": [{"type": "property", "static": false, "private": true, "sort": "alphabetical"}],
+          "properties": [{"type": "property", "static": false, "private": false, "sort": "alphabetical"}],
+          "getters": [{"type": "method", "kind": "get", "static": false, "private": false, "sort": "alphabetical"}],
+          "private-methods": [{"type": "method", "static": false, "private": true, "sort": "alphabetical"}],
+          "methods": [{"type": "method", "static": false, "private": false, "sort": "alphabetical"}]
+        },
+        "accessorPairPositioning": "getThenSet",
+        "locale": "en-GB"
+      }
+    ],
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }]
+  }
+}
